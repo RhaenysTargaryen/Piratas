@@ -34,4 +34,16 @@ class Pirata {
 		unaVictima.puedeSerSaqueadoPor(this)
 	}
 
+	def tieneItemsParaBusquedaDelTesoro()	{
+		this . tieneUnItem("compass") || this . tieneUnItem ("map") || this . tieneUnItem ("botlleOfGrodXD")
+	}
+	
+	def tieneMasDeCincoMonedas() {
+		this.cantidadDeDinero >=5
+	}
+
+	def tieneMasDeDiezItems() {
+		this.cantidadDeItems >=10
+	}
+
 }

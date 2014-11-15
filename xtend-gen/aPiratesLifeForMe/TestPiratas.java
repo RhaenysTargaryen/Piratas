@@ -17,7 +17,7 @@ public class TestPiratas {
     Pirata _pirata = new Pirata();
     this.barbaNegra = _pirata;
     List<String> _itemsPersonales = this.barbaNegra.getItemsPersonales();
-    _itemsPersonales.addAll(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("compass", "knife", "knife", "goldTooth", "botlleOfGrodXD")));
+    _itemsPersonales.addAll(Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("compass", "map", "knife", "goldTooth", "botlleOfGrodXD")));
     this.barbaNegra.setCantidadDeDinero(1000);
     this.barbaNegra.setNivelDeEbriedad(50);
   }

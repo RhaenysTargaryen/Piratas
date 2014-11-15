@@ -10,7 +10,7 @@ class TestPiratas {
 	@Before
 	def void setUp() {
 		barbaNegra = new Pirata
-		barbaNegra.itemsPersonales.addAll(#["compass", "knife", "knife", "goldTooth", "botlleOfGrodXD"])
+		barbaNegra.itemsPersonales.addAll(#["compass", "map", "knife", "goldTooth", "botlleOfGrodXD"])
 		barbaNegra.cantidadDeDinero = 1000
 		barbaNegra.nivelDeEbriedad = 50
 	}
