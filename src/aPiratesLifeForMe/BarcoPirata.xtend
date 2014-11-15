@@ -12,4 +12,8 @@ class BarcoPirata implements Victima {
 	override puedeSerSaqueadoPor (Pirata unPirata){
 		unPirata.estaPasadoDeGrogXD
 	}
+	def unTripulanteTieneLaLlave ()
+	{
+		this.tripulacion.exists[unPirata | unPirata.tieneUnItem("key")]
+	}
 }

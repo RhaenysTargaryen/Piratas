@@ -8,6 +8,6 @@ class BusquedaDelTesoro extends Mision implements Misiones{
 		unPirata.tieneItemsParaBusquedaDelTesoro && unPirata.tieneMasDeCincoMonedas
 	}
 	def puedeSerRealizadaPor(BarcoPirata unBarco){
-		unBarco.tripulacion.exists[unPirata | unPirata.tieneUnItem("key")]
+		unBarco.unTripulanteTieneLaLlave
 	}
 }
