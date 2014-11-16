@@ -53,5 +53,25 @@ class BarcoPirata implements Victima {
 	}
 	def laTripulacionSeVaDeFiesta() {
 		tripulacion.forEach[unPirata | unPirata.tomarUnTrago]
-	}	
+	}
+	def elBarcoNoEstaLleno(){
+		tripulacion.size < tripulacionMaxima
+	}
+	def incoporarTripulante(Pirata unPirata) {
+		if (elBarcoNoEstaLleno && misionActual.esUtil(unPirata))
+			agregarTripulante(unPirata)
+	}
+	def agregarTripulante(Pirata unPirata) {
+		tripulacion.add(unPirata)
+	}
+	def cambiarMision(Misiones unaMision) {
+		misionActual = unaMision
+		echarALosInutiles
+	}
+	def echarALosInutiles() {
+		tripulacion.removeIf[unPirata | misionActual.esUtil(unPirata)]
+	}
+	def esTemible() {
+		misionActual.puedeSerRealizadaPor(this)
+	}
 }

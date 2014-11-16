@@ -9,6 +9,6 @@ class ConvertirseEnLeyenda implements Misiones{
 		unPirata . tieneMasDeDiezItems
 	}
 	override def puedeSerRealizadaPor(BarcoPirata unBarco) {
-		true
+		return true
 	}
 }

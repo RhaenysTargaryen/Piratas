@@ -51,5 +51,8 @@ class Pirata {
 		nivelDeEbriedad = nivelDeEbriedad + 5
 		cantidadDeDinero--
 	}
+	def puedeUnirseA(BarcoPirata unBarcoPirata) {
+		unBarcoPirata.elBarcoNoEstaLleno && unBarcoPirata.misionActual.esUtil(this)
+	}
 
 }

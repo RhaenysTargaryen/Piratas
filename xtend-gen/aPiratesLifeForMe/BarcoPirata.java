@@ -7,6 +7,7 @@ import aPiratesLifeForMe.Victima;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -132,6 +133,53 @@ public class BarcoPirata implements Victima {
       }
     };
     this.tripulacion.forEach(_function);
+  }
+  
+  public boolean elBarcoNoEstaLleno() {
+    int _size = this.tripulacion.size();
+    return (_size < this.tripulacionMaxima);
+  }
+  
+  public boolean incoporarTripulante(final Pirata unPirata) {
+    boolean _xifexpression = false;
+    boolean _and = false;
+    boolean _elBarcoNoEstaLleno = this.elBarcoNoEstaLleno();
+    if (!_elBarcoNoEstaLleno) {
+      _and = false;
+    } else {
+      boolean _esUtil = this.misionActual.esUtil(unPirata);
+      _and = _esUtil;
+    }
+    if (_and) {
+      _xifexpression = this.agregarTripulante(unPirata);
+    }
+    return _xifexpression;
+  }
+  
+  public boolean agregarTripulante(final Pirata unPirata) {
+    return this.tripulacion.add(unPirata);
+  }
+  
+  public boolean cambiarMision(final Misiones unaMision) {
+    boolean _xblockexpression = false;
+    {
+      this.misionActual = unaMision;
+      _xblockexpression = this.echarALosInutiles();
+    }
+    return _xblockexpression;
+  }
+  
+  public boolean echarALosInutiles() {
+    final Predicate<Pirata> _function = new Predicate<Pirata>() {
+      public boolean test(final Pirata unPirata) {
+        return BarcoPirata.this.misionActual.esUtil(unPirata);
+      }
+    };
+    return this.tripulacion.removeIf(_function);
+  }
+  
+  public boolean esTemible() {
+    return this.misionActual.puedeSerRealizadaPor(this);
   }
   
   @Pure

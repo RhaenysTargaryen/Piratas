@@ -1,6 +1,8 @@
 package aPiratesLifeForMe;
 
+import aPiratesLifeForMe.BarcoPirata;
 import aPiratesLifeForMe.BusquedaDelTesoro;
+import aPiratesLifeForMe.Misiones;
 import aPiratesLifeForMe.Victima;
 import java.util.LinkedList;
 import java.util.List;
@@ -80,6 +82,19 @@ public class Pirata {
       _xblockexpression = this.cantidadDeDinero--;
     }
     return _xblockexpression;
+  }
+  
+  public boolean puedeUnirseA(final BarcoPirata unBarcoPirata) {
+    boolean _and = false;
+    boolean _elBarcoNoEstaLleno = unBarcoPirata.elBarcoNoEstaLleno();
+    if (!_elBarcoNoEstaLleno) {
+      _and = false;
+    } else {
+      Misiones _misionActual = unBarcoPirata.getMisionActual();
+      boolean _esUtil = _misionActual.esUtil(this);
+      _and = _esUtil;
+    }
+    return _and;
   }
   
   @Pure
