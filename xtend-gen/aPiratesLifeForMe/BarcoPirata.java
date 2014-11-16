@@ -6,6 +6,8 @@ import aPiratesLifeForMe.Victima;
 import java.util.HashSet;
 import java.util.Set;
 import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
@@ -21,6 +23,15 @@ public class BarcoPirata implements Victima {
   
   public boolean puedeSerSaqueadoPor(final Pirata unPirata) {
     return unPirata.estaPasadoDeGrogXD();
+  }
+  
+  public boolean unTripulanteTieneLaLlave() {
+    final Function1<Pirata, Boolean> _function = new Function1<Pirata, Boolean>() {
+      public Boolean apply(final Pirata unPirata) {
+        return Boolean.valueOf(unPirata.tieneUnItem("key"));
+      }
+    };
+    return IterableExtensions.<Pirata>exists(this.tripulacion, _function);
   }
   
   @Pure

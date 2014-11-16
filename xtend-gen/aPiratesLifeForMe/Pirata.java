@@ -1,5 +1,6 @@
 package aPiratesLifeForMe;
 
+import aPiratesLifeForMe.BusquedaDelTesoro;
 import aPiratesLifeForMe.Victima;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,6 +48,25 @@ public class Pirata {
   
   public boolean puedeSaquear(final Victima unaVictima) {
     return unaVictima.puedeSerSaqueadoPor(this);
+  }
+  
+  public boolean tieneItemsParaBusquedaDelTesoro(final BusquedaDelTesoro unaBusqueda) {
+    List<String> _itemsNecesarios = unaBusqueda.getItemsNecesarios();
+    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
+      public Boolean apply(final String unItem) {
+        return Boolean.valueOf(Pirata.this.tieneUnItem(unItem));
+      }
+    };
+    return IterableExtensions.<String>exists(_itemsNecesarios, _function);
+  }
+  
+  public boolean notieneMasDeCincoMonedas() {
+    return (this.cantidadDeDinero <= 5);
+  }
+  
+  public boolean tieneMasDeDiezItems() {
+    int _cantidadDeItems = this.cantidadDeItems();
+    return (_cantidadDeItems >= 10);
   }
   
   @Pure

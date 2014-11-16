@@ -14,6 +14,6 @@ class BarcoPirata implements Victima {
 	}
 	def unTripulanteTieneLaLlave ()
 	{
-		this.tripulacion.exists[unPirata | unPirata.tieneUnItem("key")]
+		tripulacion.exists[unPirata | unPirata.tieneUnItem("key")]
 	}
 }
