@@ -182,6 +182,10 @@ public class BarcoPirata implements Victima {
     return this.misionActual.puedeSerRealizadaPor(this);
   }
   
+  public boolean seLeAnima(final Pirata unPirata) {
+    return unPirata.estaPasadoDeGrogXD();
+  }
+  
   @Pure
   public Set<Pirata> getTripulacion() {
     return this.tripulacion;

@@ -9,7 +9,8 @@ class Pirata {
 	@Accessors List<String> itemsPersonales = new LinkedList()
 	@Accessors int cantidadDeDinero
 	@Accessors int nivelDeEbriedad
-
+    
+    
 	def tieneAlgunItemDe(Set<String> unosItems) {
 		itemsPersonales.exists[unItem|unosItems.contains(unItem)]
 	}
@@ -32,6 +33,9 @@ class Pirata {
 
 	def puedeSaquear(Victima unaVictima) {
 		unaVictima.puedeSerSaqueadoPor(this)
+	}
+	def seAnimaASaquearA(Victima unaVictima) {
+		unaVictima.seLeAnima(this)
 	}
 
 	def tieneItemsParaBusquedaDelTesoro(BusquedaDelTesoro unaBusqueda)	{

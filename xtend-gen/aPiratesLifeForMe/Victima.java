@@ -8,4 +8,6 @@ public interface Victima {
   public abstract boolean puedeSerSaqueadoPor(final Pirata unPirata);
   
   public abstract boolean esVulnerableA(final BarcoPirata unBarcoPirata);
+  
+  public abstract boolean seLeAnima(final Pirata unPirata);
 }

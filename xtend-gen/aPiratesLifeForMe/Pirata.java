@@ -52,6 +52,10 @@ public class Pirata {
     return unaVictima.puedeSerSaqueadoPor(this);
   }
   
+  public boolean seAnimaASaquearA(final Victima unaVictima) {
+    return unaVictima.seLeAnima(this);
+  }
+  
   public boolean tieneItemsParaBusquedaDelTesoro(final BusquedaDelTesoro unaBusqueda) {
     List<String> _itemsNecesarios = unaBusqueda.getItemsNecesarios();
     final Function1<String, Boolean> _function = new Function1<String, Boolean>() {

@@ -74,4 +74,7 @@ class BarcoPirata implements Victima {
 	def esTemible() {
 		misionActual.puedeSerRealizadaPor(this)
 	}
+	override def seLeAnima(Pirata unPirata) {
+		unPirata.estaPasadoDeGrogXD
+	}
 }

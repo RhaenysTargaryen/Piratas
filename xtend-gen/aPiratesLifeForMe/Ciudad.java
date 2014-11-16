@@ -33,6 +33,11 @@ public class Ciudad implements Victima {
     return _or;
   }
   
+  public boolean seLeAnima(final Pirata unPirata) {
+    int _nivelDeEbriedad = unPirata.getNivelDeEbriedad();
+    return (_nivelDeEbriedad >= 50);
+  }
+  
   @Pure
   public int getCantidadDeHabitantes() {
     return this.cantidadDeHabitantes;
