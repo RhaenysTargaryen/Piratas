@@ -44,5 +44,12 @@ class Pirata {
 	def tieneMasDeDiezItems() {
 		cantidadDeItems >=10
 	}
+	def tieneMenosDineroQue(int unaCantidadDeDinero) {
+		cantidadDeDinero < unaCantidadDeDinero
+	}
+	def tomarUnTrago() {
+		nivelDeEbriedad = nivelDeEbriedad + 5
+		cantidadDeDinero--
+	}
 
 }

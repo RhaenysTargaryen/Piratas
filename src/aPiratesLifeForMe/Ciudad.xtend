@@ -8,7 +8,11 @@ class Ciudad implements Victima {
 	override puedeSerSaqueadoPor (Pirata unPirata){
 		unPirata.nivelDeEbriedad >= 50
 	}
-	
-	
+	def agregarCiudadano() {
+		cantidadDeHabitantes++
+	}
+	override esVulnerableA(BarcoPirata unBarcoPirata) {
+		unBarcoPirata.cantidadDeTripulantes >= (cantidadDeHabitantes * 0.4) || unBarcoPirata.todosEstanPasadosDeGrogXD
+	}
 	
 }

@@ -1,10 +1,12 @@
 package aPiratesLifeForMe;
 
-import aPiratesLifeForMe.Mision;
+import aPiratesLifeForMe.Ciudad;
+import aPiratesLifeForMe.Misiones;
 import aPiratesLifeForMe.Pirata;
 import aPiratesLifeForMe.Victima;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -16,7 +18,7 @@ public class BarcoPirata implements Victima {
   private Set<Pirata> tripulacion = new HashSet<Pirata>();
   
   @Accessors
-  private Mision misionActual;
+  private Misiones misionActual;
   
   @Accessors
   private int tripulacionMaxima;
@@ -34,6 +36,104 @@ public class BarcoPirata implements Victima {
     return IterableExtensions.<Pirata>exists(this.tripulacion, _function);
   }
   
+  public int extraviarAlMasEbrioEn(final Ciudad unaCiudad) {
+    int _xblockexpression = (int) 0;
+    {
+      Pirata _pirataMasEbrio = this.pirataMasEbrio();
+      this.tripulacion.remove(_pirataMasEbrio);
+      _xblockexpression = unaCiudad.agregarCiudadano();
+    }
+    return _xblockexpression;
+  }
+  
+  public Pirata pirataMasEbrio() {
+    final Function1<Pirata, Integer> _function = new Function1<Pirata, Integer>() {
+      public Integer apply(final Pirata unPirata) {
+        return Integer.valueOf(unPirata.getNivelDeEbriedad());
+      }
+    };
+    return IterableExtensions.<Pirata, Integer>maxBy(this.tripulacion, _function);
+  }
+  
+  public boolean puedeRealizar(final Misiones unaMision) {
+    boolean _and = false;
+    boolean _tripulacionAl90PorCientoOMas = this.tripulacionAl90PorCientoOMas();
+    if (!_tripulacionAl90PorCientoOMas) {
+      _and = false;
+    } else {
+      boolean _puedeSerRealizadaPor = unaMision.puedeSerRealizadaPor(this);
+      _and = _puedeSerRealizadaPor;
+    }
+    return _and;
+  }
+  
+  public boolean tripulacionAl90PorCientoOMas() {
+    int _cantidadDeTripulantes = this.cantidadDeTripulantes();
+    return (_cantidadDeTripulantes >= (this.tripulacionMaxima * 0.9));
+  }
+  
+  public boolean esVulnerableA(final BarcoPirata unBarcoPirata) {
+    int _cantidadDeTripulantes = this.cantidadDeTripulantes();
+    int _size = unBarcoPirata.tripulacion.size();
+    int _divide = (_size / 2);
+    return (_cantidadDeTripulantes <= _divide);
+  }
+  
+  public int cantidadDeTripulantes() {
+    return this.tripulacion.size();
+  }
+  
+  public boolean todosEstanPasadosDeGrogXD() {
+    final Function1<Pirata, Boolean> _function = new Function1<Pirata, Boolean>() {
+      public Boolean apply(final Pirata unPirata) {
+        return Boolean.valueOf(unPirata.estaPasadoDeGrogXD());
+      }
+    };
+    return IterableExtensions.<Pirata>forall(this.tripulacion, _function);
+  }
+  
+  public int cantidadDeTripulantesPasadosDeGrogXD() {
+    Iterable<Pirata> _tripulantesPasadosDeGrogXD = this.tripulantesPasadosDeGrogXD();
+    return IterableExtensions.size(_tripulantesPasadosDeGrogXD);
+  }
+  
+  public Iterable<Pirata> tripulantesPasadosDeGrogXD() {
+    final Function1<Pirata, Boolean> _function = new Function1<Pirata, Boolean>() {
+      public Boolean apply(final Pirata unPirata) {
+        return Boolean.valueOf(unPirata.estaPasadoDeGrogXD());
+      }
+    };
+    return IterableExtensions.<Pirata>filter(this.tripulacion, _function);
+  }
+  
+  public Pirata elEbrioMasRicoDelBarco() {
+    Iterable<Pirata> _tripulantesPasadosDeGrogXD = this.tripulantesPasadosDeGrogXD();
+    final Function1<Pirata, Integer> _function = new Function1<Pirata, Integer>() {
+      public Integer apply(final Pirata unPirata) {
+        return Integer.valueOf(unPirata.getCantidadDeDinero());
+      }
+    };
+    return IterableExtensions.<Pirata, Integer>maxBy(_tripulantesPasadosDeGrogXD, _function);
+  }
+  
+  public int anclarEnCiudad(final Ciudad unaCiudad) {
+    int _xblockexpression = (int) 0;
+    {
+      this.laTripulacionSeVaDeFiesta();
+      _xblockexpression = this.extraviarAlMasEbrioEn(unaCiudad);
+    }
+    return _xblockexpression;
+  }
+  
+  public void laTripulacionSeVaDeFiesta() {
+    final Consumer<Pirata> _function = new Consumer<Pirata>() {
+      public void accept(final Pirata unPirata) {
+        unPirata.tomarUnTrago();
+      }
+    };
+    this.tripulacion.forEach(_function);
+  }
+  
   @Pure
   public Set<Pirata> getTripulacion() {
     return this.tripulacion;
@@ -44,11 +144,11 @@ public class BarcoPirata implements Victima {
   }
   
   @Pure
-  public Mision getMisionActual() {
+  public Misiones getMisionActual() {
     return this.misionActual;
   }
   
-  public void setMisionActual(final Mision misionActual) {
+  public void setMisionActual(final Misiones misionActual) {
     this.misionActual = misionActual;
   }
   

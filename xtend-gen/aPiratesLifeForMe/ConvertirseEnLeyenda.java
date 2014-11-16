@@ -1,13 +1,13 @@
 package aPiratesLifeForMe;
 
-import aPiratesLifeForMe.Mision;
+import aPiratesLifeForMe.BarcoPirata;
 import aPiratesLifeForMe.Misiones;
 import aPiratesLifeForMe.Pirata;
 import org.eclipse.xtend.lib.annotations.Accessors;
 import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
-public class ConvertirseEnLeyenda extends Mision implements Misiones {
+public class ConvertirseEnLeyenda implements Misiones {
   @Accessors
   private String itemDeLeyenda;
   
@@ -18,6 +18,10 @@ public class ConvertirseEnLeyenda extends Mision implements Misiones {
       _xblockexpression = unPirata.tieneMasDeDiezItems();
     }
     return _xblockexpression;
+  }
+  
+  public boolean puedeSerRealizadaPor(final BarcoPirata unBarco) {
+    return true;
   }
   
   @Pure

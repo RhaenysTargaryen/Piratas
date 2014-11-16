@@ -69,6 +69,19 @@ public class Pirata {
     return (_cantidadDeItems >= 10);
   }
   
+  public boolean tieneMenosDineroQue(final int unaCantidadDeDinero) {
+    return (this.cantidadDeDinero < unaCantidadDeDinero);
+  }
+  
+  public int tomarUnTrago() {
+    int _xblockexpression = (int) 0;
+    {
+      this.nivelDeEbriedad = (this.nivelDeEbriedad + 5);
+      _xblockexpression = this.cantidadDeDinero--;
+    }
+    return _xblockexpression;
+  }
+  
   @Pure
   public List<String> getItemsPersonales() {
     return this.itemsPersonales;

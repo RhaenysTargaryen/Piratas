@@ -1,7 +1,6 @@
 package aPiratesLifeForMe;
 
 import aPiratesLifeForMe.BarcoPirata;
-import aPiratesLifeForMe.Mision;
 import aPiratesLifeForMe.Misiones;
 import aPiratesLifeForMe.Pirata;
 import java.util.Collections;
@@ -12,7 +11,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Pure;
 
 @SuppressWarnings("all")
-public class BusquedaDelTesoro extends Mision implements Misiones {
+public class BusquedaDelTesoro implements Misiones {
   public boolean esUtil(final Pirata unPirata) {
     boolean _and = false;
     boolean _tieneItemsParaBusquedaDelTesoro = unPirata.tieneItemsParaBusquedaDelTesoro(this);
